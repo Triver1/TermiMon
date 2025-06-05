@@ -1,0 +1,106 @@
+[
+  {
+    "Name": "Kicklops",
+    "Types": [
+      "Fire"
+    ],
+    "Moves": [
+      {
+        "Movename": "Ember",
+        "Description": "A basic Fire-type attack.",
+        "Damage": 40.0,
+        "Type": "Fire",
+        "Statuseffect": "Burn",
+        "Chance": 0.1,
+        "Cooldown": 0.0
+      },
+      {
+        "Movename": "Smokescreen",
+        "Description": "Blinds the opponent with a cloud of smoke, decreasing accuracy.",
+        "Damage": 0.0,
+        "Type": "Fire",
+        "Statuseffect": "None",
+        "Chance": 1.0,
+        "Cooldown": 3.0
+      },
+      {
+        "Movename": "Fiery Kick",
+        "Description": "A flaming kick that can leave the opponent with a burn",
+        "Damage": 60.0,
+        "Type": "Fire",
+        "Statuseffect": "Burn",
+        "Chance": 0.2,
+        "Cooldown": 5.0
+      }
+    ],
+    "Icon": "\ud83d\udd25",
+    "Weight": 12.5,
+    "Dimensions": {
+      "Length": 0.7,
+      "Width": 0.4,
+      "Height": 0.8
+    },
+    "Stats": {
+      "damage": 45.0,
+      "magic": 60.0,
+      "health": 50.0,
+      "defense": 40.0,
+      "magicdefense": 55.0,
+      "speed": 60.0
+    },
+    "description": "Kicklops are known for their powerful fiery kicks. They ignite the flames on their singular foot to ward of foes. Kicklops are quite playful but are fiercely protective of their trainers. They are believed to originate from volcanic regions where they train their kick.",
+    "parents": []
+  },
+  {
+    "Name": "KitsuneFlame",
+    "Types": [
+      "Fire"
+    ],
+    "Moves": [
+      {
+        "Movename": "Ember",
+        "Description": "A basic fire-type attack.",
+        "Damage": 40.0,
+        "Type": "Fire",
+        "Statuseffect": "Burn",
+        "Chance": 0.1,
+        "Cooldown": 0.5
+      },
+      {
+        "Movename": "Scratch",
+        "Description": "A normal-type attack using claws.",
+        "Damage": 35.0,
+        "Type": "Technic",
+        "Statuseffect": "None",
+        "Chance": 1.0,
+        "Cooldown": 0.3
+      },
+      {
+        "Movename": "Fire Tail",
+        "Description": "A fire attack using the tail.",
+        "Damage": 50.0,
+        "Type": "Fire",
+        "Statuseffect": "Burn",
+        "Chance": 0.2,
+        "Cooldown": 1.0
+      }
+    ],
+    "Icon": "\ud83e\udd8a",
+    "Weight": 9.0,
+    "Dimensions": {
+      "Length": 0.7,
+      "Width": 0.4,
+      "Height": 0.6
+    },
+    "Stats": {
+      "damage": 60.0,
+      "magic": 70.0,
+      "health": 55.0,
+      "defense": 45.0,
+      "magicdefense": 60.0,
+      "speed": 75.0
+    },
+    "description": "KitsuneFlame are known for their playful yet mischievous nature. As they grow older, the flame on their tail burns brighter, and they are said to gain mystical abilities. They are revered in some cultures as bringers of good fortune.",
+    "parents": []
+  }
+]

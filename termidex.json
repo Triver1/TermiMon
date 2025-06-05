@@ -1,0 +1,55 @@
+[
+  {
+    "Name": "Pyropter",
+    "Types": [
+      "Fire",
+      "Air"
+    ],
+    "Moves": [
+      {
+        "Movename": "Ember Gust",
+        "Description": "A flurry of embers propelled by a gust of wind. May inflict a burn.",
+        "Damage": 30.0,
+        "Type": "Fire",
+        "Statuseffect": "Burn",
+        "Chance": 0.15,
+        "Cooldown": 1.0
+      },
+      {
+        "Movename": "Wing Attack",
+        "Description": "A physical attack using its wings to strike the opponent.",
+        "Damage": 35.0,
+        "Type": "Air",
+        "Statuseffect": "None",
+        "Chance": 1.0,
+        "Cooldown": 0.0
+      },
+      {
+        "Movename": "Heat Wave",
+        "Description": "Releases a wave of intense heat around the user.",
+        "Damage": 40.0,
+        "Type": "Fire",
+        "Statuseffect": "None",
+        "Chance": 0.8,
+        "Cooldown": 2.0
+      }
+    ],
+    "Icon": "\ud83d\udd25",
+    "Weight": 2.8,
+    "Dimensions": {
+      "Length": 0.4,
+      "Width": 0.25,
+      "Height": 0.5
+    },
+    "Stats": {
+      "damage": 40.0,
+      "magic": 50.0,
+      "health": 45.0,
+      "defense": 30.0,
+      "magicdefense": 40.0,
+      "speed": 65.0
+    },
+    "description": "Pyropters are small, bird-like Pokemon known for their fiery plumage and playful nature. They are born from volcanic ash, gaining the Fire-type, and their Air-type is from their natural agility. It is said that Pyropters bring good luck to trainers, often helping them navigate through difficult terrains. Their wings are not only used for flight, but also for fanning embers and creating small bursts of fire.",
+    "parents": []
+  }
+]
