@@ -307,17 +307,18 @@ class TermiDex:
 
 
 class TermiVironment:
-    def __init__(self, termidex=None, party=None, storage=None):
+    def __init__(self, termidex=None, party=None, storage=None, breeding_pairs=None):
         self.termidex = termidex or TermiDex()
         self.entities = []  # All living entities (for world simulation)
         # List of TermimonEntity (active, max 6)
         self.current_party = party or []
         # List of TermimonEntity (PC storage)
         self.storage = storage or []
+        # List of dicts: {"parent1":..., "parent2":..., "elapsed":...}
+        self.breeding_pairs = breeding_pairs or []
         self.time = 0  # time units (100 = 1 day)
 
     def add_entity(self, entity, to_party=False):
-        # Adds to environment and (optionally) to party if space, otherwise to storage
         self.entities.append(entity)
         if to_party and len(self.current_party) < 6:
             self.current_party.append(entity)
@@ -345,31 +346,73 @@ class TermiVironment:
             print(f"{entity.nickname} is not in the party.")
 
     def remove_entity(self, entity):
-        # Remove everywhere
         if entity in self.current_party:
             self.current_party.remove(entity)
         if entity in self.storage:
             self.storage.remove(entity)
         if entity in self.entities:
             self.entities.remove(entity)
+        # Remove from breeding_pairs if present
+        to_remove = []
+        for pair in self.breeding_pairs:
+            if entity in (pair["parent1"], pair["parent2"]):
+                to_remove.append(pair)
+        for pair in to_remove:
+            self.breeding_pairs.remove(pair)
+
+    def start_breeding(self, parent1, parent2):
+        if parent1 not in self.storage or parent2 not in self.storage:
+            print("Both parents must be in storage!")
+            return False
+        if parent1.lifestage != LifeStage.ADULT or parent2.lifestage != LifeStage.ADULT:
+            print("Both parents must be adults!")
+            return False
+        # Remove from storage and add to breeding room
+        self.storage.remove(parent1)
+        self.storage.remove(parent2)
+        self.breeding_pairs.append(
+            {"parent1": parent1, "parent2": parent2, "elapsed": 0})
+        print(f"Started breeding {parent1.nickname} × {parent2.nickname}")
+        return True
 
     def passtime(self, time_units=1):
         self.time += time_units
+        # Age all entities
         for ent in self.entities:
             ent.progress_age(time_units)
             if ent.lifestage == LifeStage.DEAD:
                 print(f"{ent.nickname} has died.")
+        # Remove dead everywhere
         self.entities = [
             e for e in self.entities if e.lifestage != LifeStage.DEAD]
-        # Clean up party/storage for dead Termimons too
         self.current_party = [
             e for e in self.current_party if e.lifestage != LifeStage.DEAD]
         self.storage = [
             e for e in self.storage if e.lifestage != LifeStage.DEAD]
+        # Progress breeding pairs
+        finished = []
+        for pair in self.breeding_pairs:
+            pair["elapsed"] += time_units
+            # Handle parent death
+            if pair["parent1"].lifestage == LifeStage.DEAD or pair["parent2"].lifestage == LifeStage.DEAD:
+                print(f"Breeding failed: one parent died!")
+                finished.append(pair)
+            elif pair["elapsed"] >= 200:  # 2 days
+                # Create baby
+                child = pair["parent1"].breed(pair["parent2"])
+                print(f"{pair['parent1'].nickname} and {
+                      pair['parent2'].nickname} finished breeding!")
+                # Return parents to storage
+                self.storage.extend([pair["parent1"], pair["parent2"]])
+                finished.append(pair)
+        for pair in finished:
+            self.breeding_pairs.remove(pair)
 
     def breed_entities(self, parent1, parent2):
+        # Direct breeding (not via breeding room, e.g. party breed)
         d1 = termimon_to_dict(parent1.info)
         d2 = termimon_to_dict(parent2.info)
+        import termimon.termimon_generator as termimon_generator
         result = termimon_generator.breed(d1, d2)
         if isinstance(result, str):
             result = json.loads(result)
@@ -382,6 +425,7 @@ class TermiVironment:
         return child
 
     def generate_starter(self, starter_type, to_party=True):
+        import termimon.termimon_generator as termimon_generator
         result = termimon_generator.startermon(starter_type)
         if isinstance(result, str):
             result = json.loads(result)
@@ -401,16 +445,28 @@ class TermiVironment:
         print(f"Storage ({len(self.storage)}):")
         for ent in self.storage:
             ent.display()
+        print(f"Breeding Room ({len(self.breeding_pairs)}):")
+        for pair in self.breeding_pairs:
+            left = max(0, 200 - pair['elapsed'])
+            print(
+                f" - {pair['parent1'].nickname} × {pair['parent2'].nickname} ({left//100} days left)")
         self.termidex.display()
 
-    # ---- Saving and Loading ----
     def save_to_file(self, filename="termivironment.json"):
         data = {
             "time": self.time,
             "termidex": [termimon_to_dict(ti) for ti in self.termidex.termimons],
             "entities": [self._entity_to_dict(e) for e in self.entities],
             "current_party": [self.entities.index(e) for e in self.current_party],
-            "storage": [self.entities.index(e) for e in self.storage]
+            "storage": [self.entities.index(e) for e in self.storage],
+            "breeding_pairs": [
+                {
+                    "parent1": self.entities.index(pair["parent1"]),
+                    "parent2": self.entities.index(pair["parent2"]),
+                    "elapsed": pair["elapsed"],
+                }
+                for pair in self.breeding_pairs
+            ]
         }
         with open(filename, "w") as f:
             json.dump(data, f, indent=2)
@@ -424,13 +480,19 @@ class TermiVironment:
         termidex.termimons = [dict_to_termimoninformation(
             d) for d in data["termidex"]]
         env = cls(termidex=termidex)
-        # First, create all entities without links
         env.entities = [cls._entity_from_dict(
             ed, env) for ed in data["entities"]]
-        # Set up party and storage lists using indices
         env.current_party = [env.entities[i]
                              for i in data.get("current_party", [])]
         env.storage = [env.entities[i] for i in data.get("storage", [])]
+        env.breeding_pairs = [
+            {
+                "parent1": env.entities[pair["parent1"]],
+                "parent2": env.entities[pair["parent2"]],
+                "elapsed": pair["elapsed"]
+            }
+            for pair in data.get("breeding_pairs", [])
+        ]
         env.time = data.get("time", 0)
         print(f"Environment loaded from {filename}.")
         return env

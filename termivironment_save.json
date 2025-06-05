@@ -1,5 +1,5 @@
 {
-  "time": 800,
+  "time": 0,
   "termidex": [
     {
       "Name": "Pyropter",
@@ -53,46 +53,287 @@
       },
       "description": "Pyropters are small, bird-like Pokemon known for their fiery plumage and playful nature. They are born from volcanic ash, gaining the Fire-type, and their Air-type is from their natural agility. It is said that Pyropters bring good luck to trainers, often helping them navigate through difficult terrains. Their wings are not only used for flight, but also for fanning embers and creating small bursts of fire.",
       "parents": []
+    },
+    {
+      "Name": "Flickit",
+      "Types": [
+        "Fire"
+      ],
+      "Moves": [
+        {
+          "Movename": "Ember",
+          "Description": "A basic fire attack.",
+          "Damage": 0.6,
+          "Type": "Fire",
+          "Statuseffect": "Burn",
+          "Chance": 0.1,
+          "Cooldown": 0.5
+        },
+        {
+          "Movename": "Scratch",
+          "Description": "A normal-type claw attack.",
+          "Damage": 0.4,
+          "Type": "Fire",
+          "Statuseffect": "None",
+          "Chance": 1.0,
+          "Cooldown": 0.3
+        },
+        {
+          "Movename": "Fire Tail",
+          "Description": "Flickit ignites its tail and strikes the opponent.",
+          "Damage": 0.7,
+          "Type": "Fire",
+          "Statuseffect": "Burn",
+          "Chance": 0.2,
+          "Cooldown": 1.0
+        }
+      ],
+      "Icon": "\ud83d\udd25",
+      "Weight": 3.5,
+      "Dimensions": {
+        "Length": 0.4,
+        "Width": 0.2,
+        "Height": 0.5
+      },
+      "Stats": {
+        "damage": 0.7,
+        "magic": 0.6,
+        "health": 0.5,
+        "defense": 0.4,
+        "magicdefense": 0.5,
+        "speed": 0.7
+      },
+      "description": "Flickit are small, playful fire-type Pok\u00e9mon known for their mischievous nature and fiery tails. They are often found near human settlements, drawn to the warmth and energy of populated areas. Legend says that a Flickit's tail fire burns brighter when it experiences joy or excitement, and it is believed that keeping a Flickit happy can bring good fortune.",
+      "parents": []
+    },
+    {
+      "Name": "Emberilla",
+      "Types": [
+        "Fire"
+      ],
+      "Moves": [
+        {
+          "Movename": "Ember",
+          "Description": "A basic fire-type move that shoots a small ember at the opponent.",
+          "Damage": 0.4,
+          "Type": "Fire",
+          "Statuseffect": "Burn",
+          "Chance": 0.1,
+          "Cooldown": 0.5
+        },
+        {
+          "Movename": "Fire Tail Whip",
+          "Description": "Whips the opponent using their tail. May cause a burn.",
+          "Damage": 0.3,
+          "Type": "Fire",
+          "Statuseffect": "Burn",
+          "Chance": 0.15,
+          "Cooldown": 1
+        },
+        {
+          "Movename": "Leer",
+          "Description": "Lowers the defense of the opponent with an intimidating glare.",
+          "Damage": 0,
+          "Type": "Fire",
+          "Statuseffect": "None",
+          "Chance": 1,
+          "Cooldown": 0.5
+        }
+      ],
+      "Icon": "\ud83d\udd25",
+      "Weight": 2.3,
+      "Dimensions": {
+        "Length": 0.4,
+        "Width": 0.2,
+        "Height": 0.5
+      },
+      "Stats": {
+        "damage": 0.6,
+        "magic": 0.7,
+        "health": 0.5,
+        "defense": 0.4,
+        "magicdefense": 0.6,
+        "speed": 0.7
+      },
+      "description": "Emberilla are playful and energetic Fire-type Pokemon known for their mischievous nature. They are easily identified by the flame burning at the tip of their tail, which intensifies with their emotions. Ancient folklore says that Emberilla were born from small sparks of passion, and are often found near places of great joy or excitement.",
+      "parents": []
     }
   ],
   "entities": [
     {
       "info": {
-        "Name": "Pyropter",
+        "Name": "Flickit",
         "Types": [
-          "Fire",
-          "Air"
+          "Fire"
         ],
         "Moves": [
           {
-            "Movename": "Ember Gust",
-            "Description": "A flurry of embers propelled by a gust of wind. May inflict a burn.",
-            "Damage": 30.0,
+            "Movename": "Ember",
+            "Description": "A basic fire attack.",
+            "Damage": 0.6,
             "Type": "Fire",
             "Statuseffect": "Burn",
-            "Chance": 0.15,
-            "Cooldown": 1.0
+            "Chance": 0.1,
+            "Cooldown": 0.5
           },
           {
-            "Movename": "Wing Attack",
-            "Description": "A physical attack using its wings to strike the opponent.",
-            "Damage": 35.0,
-            "Type": "Air",
-            "Statuseffect": "None",
-            "Chance": 1.0,
-            "Cooldown": 0.0
-          },
-          {
-            "Movename": "Heat Wave",
-            "Description": "Releases a wave of intense heat around the user.",
-            "Damage": 40.0,
+            "Movename": "Scratch",
+            "Description": "A normal-type claw attack.",
+            "Damage": 0.4,
             "Type": "Fire",
             "Statuseffect": "None",
-            "Chance": 0.8,
-            "Cooldown": 2.0
+            "Chance": 1.0,
+            "Cooldown": 0.3
+          },
+          {
+            "Movename": "Fire Tail",
+            "Description": "Flickit ignites its tail and strikes the opponent.",
+            "Damage": 0.7,
+            "Type": "Fire",
+            "Statuseffect": "Burn",
+            "Chance": 0.2,
+            "Cooldown": 1.0
           }
         ],
         "Icon": "\ud83d\udd25",
+        "Weight": 3.5,
+        "Dimensions": {
+          "Length": 0.4,
+          "Width": 0.2,
+          "Height": 0.5
+        },
+        "Stats": {
+          "damage": 0.7,
+          "magic": 0.6,
+          "health": 0.5,
+          "defense": 0.4,
+          "magicdefense": 0.5,
+          "speed": 0.7
+        },
+        "description": "Flickit are small, playful fire-type Pok\u00e9mon known for their mischievous nature and fiery tails. They are often found near human settlements, drawn to the warmth and energy of populated areas. Legend says that a Flickit's tail fire burns brighter when it experiences joy or excitement, and it is believed that keeping a Flickit happy can bring good fortune.",
+        "parents": []
+      },
+      "nickname": "Flickit",
+      "current_health": 0.5,
+      "age": 3000,
+      "lifestage": "Adult",
+      "cooldowns": {
+        "Ember": 0,
+        "Scratch": 0,
+        "Fire Tail": 0
+      },
+      "status_effects": []
+    },
+    {
+      "info": {
+        "Name": "Emberilla",
+        "Types": [
+          "Fire"
+        ],
+        "Moves": [
+          {
+            "Movename": "Ember",
+            "Description": "A basic fire-type move that shoots a small ember at the opponent.",
+            "Damage": 0.4,
+            "Type": "Fire",
+            "Statuseffect": "Burn",
+            "Chance": 0.1,
+            "Cooldown": 0.5
+          },
+          {
+            "Movename": "Fire Tail Whip",
+            "Description": "Whips the opponent using their tail. May cause a burn.",
+            "Damage": 0.3,
+            "Type": "Fire",
+            "Statuseffect": "Burn",
+            "Chance": 0.15,
+            "Cooldown": 1
+          },
+          {
+            "Movename": "Leer",
+            "Description": "Lowers the defense of the opponent with an intimidating glare.",
+            "Damage": 0,
+            "Type": "Fire",
+            "Statuseffect": "None",
+            "Chance": 1,
+            "Cooldown": 0.5
+          }
+        ],
+        "Icon": "\ud83d\udd25",
+        "Weight": 2.3,
+        "Dimensions": {
+          "Length": 0.4,
+          "Width": 0.2,
+          "Height": 0.5
+        },
+        "Stats": {
+          "damage": 0.6,
+          "magic": 0.7,
+          "health": 0.5,
+          "defense": 0.4,
+          "magicdefense": 0.6,
+          "speed": 0.7
+        },
+        "description": "Emberilla are playful and energetic Fire-type Pokemon known for their mischievous nature. They are easily identified by the flame burning at the tip of their tail, which intensifies with their emotions. Ancient folklore says that Emberilla were born from small sparks of passion, and are often found near places of great joy or excitement.",
+        "parents": []
+      },
+      "nickname": "Emberilla",
+      "current_health": 0.5,
+      "age": 3000,
+      "lifestage": "Adult",
+      "cooldowns": {
+        "Ember": 0,
+        "Fire Tail Whip": 0,
+        "Leer": 0
+      },
+      "status_effects": []
+    },
+    {
+      "info": {
+        "Name": "Emberilla",
+        "Types": [
+          "Fire",
+          "Grass"
+        ],
+        "Moves": [
+          {
+            "Movename": "Ember Snap",
+            "Description": "A quick snap of fiery leaves. May cause a slight burn.",
+            "Damage": 35.0,
+            "Type": "Fire",
+            "Statuseffect": "Burn",
+            "Chance": 0.15,
+            "Cooldown": 0.5
+          },
+          {
+            "Movename": "Leaf Blade",
+            "Description": "Slices the opponent with razor-sharp leaves.",
+            "Damage": 40.0,
+            "Type": "Grass",
+            "Statuseffect": "None",
+            "Chance": 0.9,
+            "Cooldown": 0.7
+          },
+          {
+            "Movename": "Fiery Flourish",
+            "Description": "A dazzling display of burning leaves that confuses the target.",
+            "Damage": 25.0,
+            "Type": "Fire",
+            "Statuseffect": "Confuse",
+            "Chance": 0.25,
+            "Cooldown": 1.2
+          },
+          {
+            "Movename": "Solar Beam",
+            "Description": "Gathers light before unleashing a beam of solar energy.",
+            "Damage": 60.0,
+            "Type": "Grass",
+            "Statuseffect": "None",
+            "Chance": 0.7,
+            "Cooldown": 2.0
+          }
+        ],
+        "Icon": "\ud83c\udf41",
         "Weight": 2.8,
         "Dimensions": {
           "Length": 0.4,
@@ -100,30 +341,34 @@
           "Height": 0.5
         },
         "Stats": {
-          "damage": 40.0,
-          "magic": 50.0,
-          "health": 45.0,
-          "defense": 30.0,
-          "magicdefense": 40.0,
+          "damage": 45.0,
+          "magic": 60.0,
+          "health": 50.0,
+          "defense": 40.0,
+          "magicdefense": 55.0,
           "speed": 65.0
         },
-        "description": "Pyropters are small, bird-like Pokemon known for their fiery plumage and playful nature. They are born from volcanic ash, gaining the Fire-type, and their Air-type is from their natural agility. It is said that Pyropters bring good luck to trainers, often helping them navigate through difficult terrains. Their wings are not only used for flight, but also for fanning embers and creating small bursts of fire.",
+        "description": "Emberilla are small, lively Pok\u00e9mon known for their bright, fiery leaves. They love to dance in sunlit meadows and are said to bring good fortune to those who befriend them. The warmer the leaf, the happier they are.",
         "parents": []
       },
-      "nickname": "Pyropter",
-      "current_health": 45.0,
-      "age": 3800,
-      "lifestage": "Adult",
+      "nickname": "Emberilla",
+      "current_health": 50.0,
+      "age": 0,
+      "lifestage": "Baby",
       "cooldowns": {
-        "Ember Gust": 0,
-        "Wing Attack": 0,
-        "Heat Wave": 0
+        "Ember Snap": 0,
+        "Leaf Blade": 0,
+        "Fiery Flourish": 0,
+        "Solar Beam": 0
       },
       "status_effects": []
     }
   ],
   "current_party": [
-    0
+    0,
+    1
   ],
-  "storage": []
+  "storage": [
+    2
+  ]
 }
