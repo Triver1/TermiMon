@@ -1,3 +1,20 @@
+# TERMIMON - STUDY MONSTER COLLECTOR GAME ( ALPHA )
+```
+`;-.          ___,
+  `.`\_...._/`.-"`
+    \        /      ,
+    /()   () \    .' `-._
+   |)  .    ()\  /   _.'
+   \  -'-     ,; '. <
+    ;.__     ,;|   > \
+   / ,    / ,  |.-'.-'
+  (_/    (_/ ,;|.<`
+    \    ,     ;-`
+     >   \    /
+    (_,-'`> .'
+         (_,'
+```
+
 1. First install all the dependencies:
 ```bash
 pip install -r requirements.txt
