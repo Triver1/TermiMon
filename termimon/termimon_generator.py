@@ -10,7 +10,7 @@ prompts = {
 
 def generate(prompt, rarity="Common", extra=""):
     client = genai.Client(
-        api_key="AIzaSyCoLVH3MWCxogYORkKtn-UnEktB5DjPENQ",
+        api_key=os.getenv("GOOGLE_API_KEY"),
     )
 
     model = "gemini-2.0-flash"
@@ -160,4 +160,3 @@ def breed(termimon1, termimon2):
 def startermon(startertype):
     prompt = prompts["starter"]
     return generate(prompt, extra=f"\nStarter type: {startertype}")
-
